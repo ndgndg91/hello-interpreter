@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.craftinginterpreters.lox'
+group = 'com.craftinginterpreters'
 
 repositories {
     mavenCentral()
