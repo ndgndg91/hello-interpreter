@@ -28,8 +28,8 @@ abstract class Expr {
     }
 
     static class Grouping extends Expr {
-        final Literal expression;
-        public Grouping(Literal expression) {
+        final Expr expression;
+        public Grouping(Expr expression) {
             this.expression = expression;
         }
 
@@ -40,9 +40,9 @@ abstract class Expr {
     }
 
     static class Literal extends Expr {
-        final Number value;
+        final Object value;
 
-        public Literal(Number value) {
+        public Literal(Object value) {
             this.value = value;
         }
 
@@ -54,8 +54,8 @@ abstract class Expr {
 
     static class Unary extends Expr {
         final Token operator;
-        final Literal right;
-        public Unary(Token operator, Literal right) {
+        final Expr right;
+        public Unary(Token operator, Expr right) {
             this.operator = operator;
             this.right = right;
         }
