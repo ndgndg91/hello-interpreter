@@ -4,10 +4,10 @@ abstract class Expr {
 
     abstract <T> String accept(Visitor<T> visitor);
     public interface Visitor<T> {
-        String visitBinaryExpr(Expr.Binary expr);
-        String visitGroupingExpr(Expr.Grouping expr);
-        String visitLiteralExpr(Expr.Literal expr);
-        String visitUnaryExpr(Expr.Unary expr);
+        T visitBinaryExpr(Expr.Binary expr);
+        T visitGroupingExpr(Expr.Grouping expr);
+        T visitLiteralExpr(Expr.Literal expr);
+        T visitUnaryExpr(Expr.Unary expr);
 
     }
 
@@ -23,7 +23,7 @@ abstract class Expr {
 
         @Override
         <T> String accept(Visitor<T> visitor) {
-            return visitor.visitBinaryExpr(this);
+            return visitor.visitBinaryExpr(this).toString();
         }
     }
 
@@ -35,7 +35,7 @@ abstract class Expr {
 
         @Override
         <T> String accept(Visitor<T> visitor) {
-            return visitor.visitGroupingExpr(this);
+            return visitor.visitGroupingExpr(this).toString();
         }
     }
 
@@ -48,7 +48,7 @@ abstract class Expr {
 
         @Override
         <T> String accept(Visitor<T> visitor) {
-            return visitor.visitLiteralExpr(this);
+            return visitor.visitLiteralExpr(this).toString();
         }
     }
 
@@ -62,7 +62,7 @@ abstract class Expr {
 
         @Override
         <T> String accept(Visitor<T> visitor) {
-            return visitor.visitUnaryExpr(this);
+            return visitor.visitUnaryExpr(this).toString();
         }
     }
 }
