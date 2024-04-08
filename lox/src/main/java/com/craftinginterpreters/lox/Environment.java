@@ -2,6 +2,7 @@ package com.craftinginterpreters.lox;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 class Environment {
     final Environment enclosing;
@@ -43,5 +44,22 @@ class Environment {
     // var a = 10;
     void define(String name, Object value) {
         values.put(name, value);
+    }
+
+    Environment ancestor(int distance) {
+        Environment environment = this;
+        for (int i = 0; i < distance; i++) {
+            environment = Objects.requireNonNull(environment).enclosing;
+        }
+
+        return environment;
+    }
+
+    Object getAt(int distance, String name) {
+        return ancestor(distance).values.get(name);
+    }
+
+    void assignAt(int distance, Token name, Object value) {
+        ancestor(distance).values.put(name.lexeme(), value);
     }
 }
