@@ -1,0 +1,43 @@
+class Doughnut {
+    init() {
+        print "super class";
+    }
+
+    cook() {
+        print "Fry until golden brown.";
+    }
+}
+class BostonCream < Doughnut {
+    init() {
+        print "sub class";
+    }
+
+    cook() {
+        super.cook();
+        print "Pipe full of custard and coat with chocolate.";
+    }
+}
+
+var cream = BostonCream(); // 서브 클래스 init 만 호출
+cream.cook(); // 자식 메서드에서 부모 메서드 호출후 자식 메서드 실행
+
+
+class A {
+    method() {
+        print "A method";
+    }
+}
+
+class B < A {
+    method() {
+        print "B method";
+    }
+
+    test() {
+        super.method();
+    }
+}
+
+class C < B {}
+
+C().test(); // "A method"
