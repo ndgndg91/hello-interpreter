@@ -17,7 +17,7 @@ class LoxInstance {
         }
 
         LoxFunction method = ((LoxClass) klass).findMethod(name.lexeme());
-        if (method != null) return method;
+        if (method != null) return method.bind(this);
         throw new RuntimeError(name, "Undefined field: " + name.lexeme() + ".");
     }
 
