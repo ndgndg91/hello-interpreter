@@ -16,4 +16,6 @@ add_executable(hello_interpreter
         clox/debug.c
         clox/debug.c
         clox/value.h
-        clox/value.c)
+        clox/value.c
+        clox/vm.h
+        clox/vm.c)
