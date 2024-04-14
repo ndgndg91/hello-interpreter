@@ -30,6 +30,13 @@ Value pop() {
 static InterpretResult run() {
 #define READ_BYTE() (*vm.ip++)
 #define READ_CONSTANT() (vm.chunk->constants.values[READ_BYTE()])
+#define BINARY_OP(op) \
+    do {              \
+        double b = pop(); \
+        double a = pop(); \
+        push(a op b);      \
+    } while(false)
+
     // 모든 명령어를 순차로 하나씩 실행 - decoding 또는 dispatch
     for (;;) {
 #ifdef DEBUG_TRACE_EXECUTION
@@ -50,6 +57,22 @@ static InterpretResult run() {
                 push(constant);
                 break;
             }
+            case OP_ADD: {
+                BINARY_OP(+);
+                break;
+            }
+            case OP_SUBTRACT: {
+                BINARY_OP(-);
+                break;
+            }
+            case OP_MULTIPLY: {
+                BINARY_OP(*);
+                break;
+            }
+            case OP_DIVIDE: {
+                BINARY_OP(/);
+                break;
+            }
             case OP_NEGATIVE: {
                 push(-pop());
                 break;
@@ -64,6 +87,7 @@ static InterpretResult run() {
 
 #undef READ_BYTE
 #undef READ_CONSTANT
+#undef BINARY_OP
 }
 
 InterpretResult interpret(Chunk* chunk) {
