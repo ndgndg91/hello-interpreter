@@ -50,12 +50,15 @@ static InterpretResult run() {
                 push(constant);
                 break;
             }
+            case OP_NEGATIVE: {
+                push(-pop());
+                break;
+            }
             case OP_RETURN:{
                 printValue(pop());
                 printf("\n");
                 return INTERPRET_OK;
             }
-
         }
     }
 
