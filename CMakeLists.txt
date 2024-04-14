@@ -18,4 +18,8 @@ add_executable(hello_interpreter
         clox/value.h
         clox/value.c
         clox/vm.h
-        clox/vm.c)
+        clox/vm.c
+        clox/compiler.c
+        clox/scanner.h
+        clox/scanner.c
+        clox/compiler.h)

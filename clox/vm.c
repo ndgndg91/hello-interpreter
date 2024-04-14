@@ -2,6 +2,7 @@
 #include "common.h"
 #include "vm.h"
 #include "debug.h"
+#include "compiler.h"
 
 VM vm;
 
@@ -90,8 +91,7 @@ static InterpretResult run() {
 #undef BINARY_OP
 }
 
-InterpretResult interpret(Chunk* chunk) {
-    vm.chunk = chunk; // 실행 중인 chunk 를 vm 에 저장.
-    vm.ip = vm.chunk->code; // 현재 실행 중인 명령어의 위치를 ip 에 보관. instruction pointer (JVM program counter = pc )
-    return run(); // 바이트코드 명령어를 실행하는 내부 헬퍼 함수 호출.
+InterpretResult interpret(const char* source) {
+    compile(source);
+    return INTERPRET_OK;
 }
