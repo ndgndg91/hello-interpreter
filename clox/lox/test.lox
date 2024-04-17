@@ -1,0 +1,10 @@
+print "one";
+print true;
+print 2 + 1;
+var a = 100;
+print a;
+a = 200;
+print a;
+var b = 500;
+var c = a + b;
+print c;
