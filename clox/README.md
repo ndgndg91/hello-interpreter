@@ -7,3 +7,13 @@
   - 유한 상태 기계 finite state machine
   - switch 문을 통한 구현
   - 렉스 대안
+
+## Scanner
+
+## Compiler
+
+## VM
+
+
+
+- 하향식 연산자 우선순위 파싱 (top-down operator precedence parsing)

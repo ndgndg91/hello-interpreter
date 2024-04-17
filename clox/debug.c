@@ -2,6 +2,7 @@
 
 #include "debug.h"
 #include "value.h"
+#include "chunk.h"
 
 void disassembleChunk(Chunk* chunk, const char* name) {
     printf("== %s ==\n", name);
