@@ -642,7 +642,7 @@ static void parsePrecedence(Precedence precedence) {
     bool canAssign = precedence <= PREC_ASSIGNMENT;
     prefixRule(canAssign);
 
-    while (prefixRule <= getRule(parser.current.type)->precedence) {
+    while (precedence <= getRule(parser.current.type)->precedence) {
         advance();
         ParseFn infixRule = getRule(parser.previous.type)->infix;
         infixRule(canAssign);

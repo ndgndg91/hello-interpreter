@@ -33,7 +33,7 @@ static Entry* findEntry(Entry* entries, int capacity, ObjString* key) {
                 // 툼스톤 발견
                 if (tombstone == NULL) tombstone = entry;
             }
-        } else if (entry->key == key){
+        } else if (areObjStringEqual(entry->key, key)){
             return entry;
         }
 

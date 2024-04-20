@@ -18,7 +18,7 @@ static Obj* allocateObject(size_t size, ObjType type) {
 }
 
 static ObjString* allocateString(char* chars, int length, uint32_t hash) {
-    ObjString* string= ALLOCATE(ObjString, OBJ_STRING);
+    ObjString* string= ALLOCATE_OBJ(ObjString, OBJ_STRING);
     string->length = length;
     string->chars = chars;
     string->hash = hash;
@@ -62,10 +62,17 @@ ObjString* copyString(const char* chars, int length) {
     return allocateString(heapChars, length, hash);
 }
 
-void printObjet(Value value) {
+void printObject(Value value) {
     switch (OBJ_TYPE(value)) {
-        case OBJ_STRING:
+        case OBJ_STRING: {
             printf("%s", AS_CSTRING(value));
             break;
+        }
     }
+}
+
+bool areObjStringEqual(ObjString *s1, ObjString *s2) {
+    if (s1->length != s2->length) return false;
+    if (s1->hash != s2->hash) return false;
+    return strncmp(s1->chars, s2->chars, s1->length) == 0;
 }
