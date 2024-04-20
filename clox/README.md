@@ -17,3 +17,12 @@
 
 
 - 하향식 연산자 우선순위 파싱 (top-down operator precedence parsing)
+
+## Variable
+- Bucket Array
+- Resolve Collision
+  - Load Factor
+  - Open Addressing
+- Hash Function
+- Hash Table
+- String Interning
