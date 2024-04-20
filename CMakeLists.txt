@@ -22,4 +22,6 @@ add_executable(hello_interpreter
         clox/compiler.c
         clox/scanner.h
         clox/scanner.c
-        clox/compiler.h)
+        clox/compiler.h
+        clox/object.h
+        clox/object.c)
