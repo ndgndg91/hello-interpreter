@@ -1,9 +1,11 @@
+//> Scanning on Demand compiler-h
 #ifndef clox_compiler_h
 #define clox_compiler_h
 
-#include "chunk.h"
 #include "object.h"
+#include "vm.h"
 
-ObjFunction *compile(const char* source);
+ObjFunction* compile(const char* source);
+void markCompilerRoots();
 
-#endif //clox_compiler_h
+#endif

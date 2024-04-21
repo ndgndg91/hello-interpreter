@@ -1,3 +1,4 @@
+//> Chunks of Bytecode chunk-h
 #ifndef clox_chunk_h
 #define clox_chunk_h
 
@@ -15,9 +16,12 @@ typedef enum {
     OP_GET_GLOBAL,
     OP_DEFINE_GLOBAL,
     OP_SET_GLOBAL,
-    OP_EQUAL,
     OP_GET_UPVALUE,
     OP_SET_UPVALUE,
+    OP_GET_PROPERTY,
+    OP_SET_PROPERTY,
+    OP_GET_SUPER,
+    OP_EQUAL,
     OP_GREATER,
     OP_LESS,
     OP_ADD,
@@ -25,15 +29,20 @@ typedef enum {
     OP_MULTIPLY,
     OP_DIVIDE,
     OP_NOT,
-    OP_NEGATIVE,
+    OP_NEGATE,
     OP_PRINT,
     OP_JUMP,
     OP_JUMP_IF_FALSE,
     OP_LOOP,
     OP_CALL,
+    OP_INVOKE,
+    OP_SUPER_INVOKE,
     OP_CLOSURE,
     OP_CLOSE_UPVALUE,
     OP_RETURN,
+    OP_CLASS,
+    OP_INHERIT,
+    OP_METHOD
 } OpCode;
 
 typedef struct {
@@ -47,6 +56,6 @@ typedef struct {
 void initChunk(Chunk* chunk);
 void freeChunk(Chunk* chunk);
 void writeChunk(Chunk* chunk, uint8_t byte, int line);
-int addConstants(Chunk* chunk, Value value);
+int addConstant(Chunk* chunk, Value value);
 
 #endif
